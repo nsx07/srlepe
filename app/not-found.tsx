@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Cat, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import Footer from "@/components/footer";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-[calc(100vh-4.1rem)]">
       <main className="flex-1 flex items-center justify-center p-4 md:p-6">
         <div className="w-full max-w-xl mx-auto space-y-8">
           <div className="text-center">
@@ -59,6 +60,7 @@ export default function NotFound() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

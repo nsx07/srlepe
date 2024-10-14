@@ -16,7 +16,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
 
   return (
     <>
-      <form className="flex flex-col min-w-64 sm:max-w-64 mx-auto">
+      <form className="flex flex-col w-full max-w-md p-4 gap-2 [&>input]:mb-4 mx-auto">
         <h1 className="text-2xl font-medium">Cadastrar</h1>
         <p className="text-sm text text-foreground">
           Já tem uma conta?{" "}

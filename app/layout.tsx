@@ -38,29 +38,7 @@ export default function RootLayout({
                 <HeaderAuth />
               </div>
             </nav>
-            <main className="h-full max-w-5xl px-5 mx-auto">{children}</main>
-            <footer className="bottom-0 left-0 right-0 static w-full">
-              <div className="flex flex-col gap-2 sm:flex-row py-6 shrink-0 items-center md:px-6 border-t max-w-5xl px-5 mx-auto">
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  © {new Date().getFullYear()} Srlepe. Todos os direitos
-                  reservados.
-                </p>
-                <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-                  <Link
-                    className="text-xs hover:underline underline-offset-4"
-                    href="#"
-                  >
-                    Termos de Serviço
-                  </Link>
-                  <Link
-                    className="text-xs hover:underline underline-offset-4"
-                    href="#"
-                  >
-                    Privacidade
-                  </Link>
-                </nav>
-              </div>
-            </footer>
+            <main className="max-w-5xl px-5 mx-auto">{children}</main>
           </main>
         </ThemeProvider>
       </body>

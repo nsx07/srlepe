@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Cat, Camera, Share2, Heart } from "lucide-react";
+import Footer from "@/components/footer";
 
 export default function LandingPage() {
   return (
@@ -78,7 +79,7 @@ export default function LandingPage() {
                   className="rounded-lg overflow-hidden shadow-lg border-gray-800 border"
                 >
                   <img
-                    src={`https://g-nhjnnjsncoy.vusercontent.net/placeholder.svg?height=300&width=400`}
+                    src={`/placeholder.svg?height=300&width=400`}
                     alt={`Pose engraçada de gato ${i}`}
                     className="w-full h-48 object-cover"
                   />
@@ -94,6 +95,7 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

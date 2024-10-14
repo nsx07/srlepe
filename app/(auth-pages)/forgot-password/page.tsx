@@ -12,9 +12,9 @@ export default function ForgotPassword({
 }) {
   return (
     <>
-      <form className="flex-1 flex flex-col w-full gap-2 text-foreground [&>input]:mb-6 min-w-64 max-w-64 mx-auto">
+      <form className="flex flex-col w-full max-w-md p-4 gap-2 [&>input]:mb-4 mx-auto">
         <div>
-          <h1 className="text-2xl font-medium">Redefinir Senha</h1>
+          <h1 className="text-2xl font-medium">Redefinir senha</h1>
           <p className="text-sm text-secondary-foreground">
             Já tem uma conta?{" "}
             <Link className="text-primary underline" href="/sign-in">
@@ -26,7 +26,7 @@ export default function ForgotPassword({
           <Label htmlFor="email">Email</Label>
           <Input name="email" placeholder="voce@exemplo.com" required />
           <SubmitButton formAction={forgotPasswordAction}>
-            Redefinir Senha
+            Redefinir senha
           </SubmitButton>
           <FormMessage message={searchParams} />
         </div>

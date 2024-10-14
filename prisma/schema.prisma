@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  username   String   @unique
+  email      String   @unique
+  phone      String?
+  password   String
+  avatar_url String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  pets       Pet[]
+  likes      Like[]
+  comments   Comment[]
+  followers  Follower[]
+}
+
+model Pet {
+  id          String   @id @default(uuid())
+  name        String
+  date_birth  DateTime?
+  avatar_url  String?
+  q_followers BigInt   @default(0)
+  user_id     String
+  bio         String?
+  gender      PetGender
+  posts       PostPet[]
+  followers   Follower[]
+  user        User     @relation(fields: [user_id], references: [id])
+}
+
+model Post {
+  id          String      @id @default(uuid())
+  description String?
+  metatags    Json?
+  q_likes     BigInt      @default(0)
+  q_comments  BigInt      @default(0)
+  post_media  PostMedia[]
+  post_pets   PostPet[]
+  likes       Like[]
+  comments    Comment[]
+}
+
+model PostPet {
+  id      String @id @default(uuid())
+  pet_id  String
+  post_id String
+  pet     Pet    @relation(fields: [pet_id], references: [id])
+  post    Post   @relation(fields: [post_id], references: [id])
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  post_id   String
+  user_id   String
+  created_at DateTime @default(now())
+  post      Post     @relation(fields: [post_id], references: [id])
+  user      User     @relation(fields: [user_id], references: [id])
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  content    String
+  q_likes    BigInt   @default(0)
+  post_id    String
+  user_id    String
+  parent_id  String? 
+  children   Comment[] @relation("ChildToParent")
+  post       Post     @relation(fields: [post_id], references: [id])
+  user       User     @relation(fields: [user_id], references: [id])
+  parent     Comment? @relation("ChildToParent", fields: [parent_id], references: [id])
+}
+
+model PostMedia {
+  id        String   @id @default(uuid())
+  content_url String
+  tags      Json?
+  post_id   String
+  type      MediaType
+  post      Post     @relation(fields: [post_id], references: [id])
+}
+
+model Follower {
+  id      String @id @default(uuid())
+  user_id String
+  pet_id  String
+  user    User   @relation(fields: [user_id], references: [id])
+  pet     Pet    @relation(fields: [pet_id], references: [id])
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+enum PetGender {
+  MALE
+  FEMALE
+}
